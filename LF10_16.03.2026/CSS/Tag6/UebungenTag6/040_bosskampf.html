@@ -1,0 +1,101 @@
+<!-- Bosskampf-Header
+
+Erstelle einen Header für eine Bosskampf-Seite.
+
+Vorgaben:   - Verlauf von black über darkred zu orange
+            - Richtung: nach unten
+            - Große Schrift
+            - Text mittig
+
+Extra-Challenge: Kombiniere den Verlauf mit text-shadow. -->
+
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bosskampf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        background: #0a0a0a;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        }
+
+        header {
+        width: 100%;
+        padding: 4rem 2rem;
+        text-align: center;
+        background: linear-gradient(to bottom, black, darkred, orange);
+        position: relative;
+        overflow: hidden;
+        }
+
+        header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 80, 0, 0.15), transparent),
+            repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(0, 0, 0, 0.08) 3px,
+            rgba(0, 0, 0, 0.08) 4px
+            );
+        pointer-events: none;
+        }
+
+        header h1 {
+        font-family: "Cinzel Decorative", serif;
+        font-size: clamp(2.5rem, 8vw, 7rem);
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #fff8e7;
+
+        text-shadow:
+            0 0 20px rgba(255, 120, 0, 0.9),
+            0 0 50px rgba(200, 40, 0, 0.7),
+            0 0 100px rgba(150, 0, 0, 0.5),
+            4px 4px 0px #3a0000,
+            8px 8px 0px #1a0000,
+            0 2px 4px rgba(0,0,0,0.9);
+
+        position: relative;
+        animation: flicker 4s infinite;
+        }
+
+        header p {
+        font-family: "Cinzel Decorative", serif;
+        font-size: clamp(0.7rem, 2vw, 1.1rem);
+        letter-spacing: 0.4em;
+        color: rgba(255, 200, 120, 0.75);
+        text-transform: uppercase;
+        margin-top: 1rem;
+        position: relative;
+        text-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
+        }
+
+        @keyframes flicker {
+        0%, 94%, 96%, 98%, 100% { opacity: 1; }
+        95%, 97%, 99%            { opacity: 0.88; }
+        }
+    </style>
+    </head>
+    <body>
+    <header>
+        <h1>Bosskampf</h1>
+        <p>Bereite dich vor &mdash; es gibt kein Entkommen</p>
+    </header>
+    </body>
+</html>

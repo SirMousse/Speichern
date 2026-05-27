@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- Der DOCTYPE sagt dem Browser: "Das ist eine HTML Seite!"-->
+
+<html lang="de">
+<!-- <html> ist das Wurzelelement der Seite.
+        Wurzelelement = das oberste HTML-Element, das ALLE anderen Elemenet umschließt.
+        Also alles was zur Webseite gehört (<head>, <body>, Inhalte etc.) liegen innerhalb dieses <html>...</html> Tags.
+            
+        Typische Sprachcodes: de = Deutsch / en = Englisch / fr = Französisch / es = Spanisch ... etc. -->
+
+        <head>
+        <!-- <head> enthält die Metadaten = Infos über die Seite die NICHT sichtbare sind.-->
+            
+            <meta charset="UTF-8">
+            <!-- Legt die Zeichencodierung fest
+                    UTF-8 -> Umlaute und Sonderzeichen können korrekt angezeigt werden (ä,ö,ü,ß,€, etc.) -->
+            
+            <meta name="viewport" content="width=device-width, intitial-scale=1.0">
+            <!-- Sorgt dafür, dass die Seite auf dem Handy und Tablet richtig skaliert wird (= Responsive Design).
+                name="viewport" -> Diese Einstellung betrifft den sichtbaren Bereich unserer Webseite, welche wir auf unserem Gerät anschauen.
+                width=device-width -> Die Breite der Seit soll sich an die Breite des Geräts anpassen
+                initial-scale=1.0 -> Die Anfangs Zoomstufe 
+                1.0 bedeutet 100% Zoom (Standardgröße)
+                0.5 bedeutet 50% Zoom (alles kleiner)
+                2.0 bedeutet 200% Zoom (alles größer) -> NICHT empfehlen-->
+
+            <title>Biolerplate</title>
+            <!-- Title der Seite
+                -> erscheint im Browser Tab und natürlich Google in den Suchergebnissen.-->
+        </head>
+
+        <body>
+        <!-- <body> enthält alles was auf der Webseite sichtbar ist-->
+
+            <header>
+                <!-- Kopfbereich der Seite und enthält z.B. Logo, Überschrift und Navigation, Login, Anmeldung -->
+                
+                <h1>Hallo HTML!</h1>
+                <!-- <h1> ist eine Überschrift
+                        -> Überschrift der ersten Ordnung und darf nur EINMAL pro Seite genutzt werden-->
+            </header>
+
+            <main>
+                <!-- Hauptteil der Seite
+                        -> Typische Inhalte: Texte,Artikel, Bilder, Inhalte welche die Themen der Seite erklären sollen. -->
+
+                <p>Hier beginnt eure eigentliche Webseite (ALLES was ihr an Inhalten habt)!</p>
+                <!-- <p> steht für Paragraph = Absatz-->
+            </main>
+
+            <footer>
+            <!-- Fußbereich der Seite und der enthält z.B.: Copyrights, Links, Kontakte etc.-->
+                
+                <p>&copy; 2026 Mein Name</p>
+                <!-- &copy; steht für das Copyright-Zeichen
+                        HTML versteht manche Zeichen nicht direkt oder sie können euch Probleme bereiten. Deshalb gibt es Entities (Ersatzschreibweisen).-->
+            </footer>
+
+
+        </body>
+
+</html>

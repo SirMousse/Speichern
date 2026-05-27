@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tabellen in HTML</title>
+    </head>
+    
+    <body>
+        <header>
+            <h1>Tabellen in HTML</h1>
+            <p>
+                Tabellen helfen uns dabei, Daten übersichtlicher in Zeilen und Spalten darzustellen.
+                Die wichtigsten Bausteine sind:
+            </p>
+
+            <ul>
+                <li><strong>&lt;table&gt;</strong> = die Tabelle (Rahmen/ Container)</li>
+                <li><strong>&lt;tr&gt;</strong> = eine Tabellenzeile (table row)</li>
+                <li><strong>&lt;td&gt;</strong> = eine Datenzelle (table data)</li>
+                <li><strong>&lt;th&gt;</strong> = eine Überschrift für eine Zelle (table header)</li>
+            </ul>
+        </header>
+
+        <main>
+            <section>
+                <h2>1. Einfache Tabelle</h2>
+
+                <table border="2">
+                    <caption>Beispiel: Tiere</caption>
+                    <tr>
+                        <th>Tier</th>
+                        <th>Art</th>
+                        <th>Zähne</th>
+                    </tr>
+                    <tr>
+                        <td>Hund</td>
+                        <td>Säugetier</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>Katze</td>
+                        <td>Säugetier</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Biber</td>
+                        <td>Säugetier</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Nackmull</td>
+                        <td>Säugetier</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Schlange</td>
+                        <td>Reptile</td>
+                        <td>keine einheitliche feste Zahl</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>2. Tabellen mit Kopf-, Körper- und Fußbereich</h2>
+
+                <dl>
+                    <dt>&lt;thead&gt; = Kopfbereich (Table Head)</dt>
+                    <dd>Hier steht die Überschrift der Tabelle (Spaltennamen).</dd>
+
+                    <br>
+
+                    <dt>&lt;tbody&gt; = Hauptteil (Table Body)</dt>
+                    <dd>Hier stehen die eigentlichen Daten, also die Informationen, die angezeigt werden sollen.</dd>
+
+                    <br>
+
+                    <dt>&lt;tfoot&gt; = Fußbereich (Table Foot)</dt>
+                    <dd>Hier steht die zusammengefassten oder ergänzenden Informationen, zu unserer Tabelle. Bsp.: Summe, Fazit oder ein Hinweis.</dd>
+                </dl>
+
+                <table border="1">
+                    <caption>Einkaufsliste von Yoda</caption>
+
+                    <thead>
+                        <tr>
+                            <th>Produkt</th>
+                            <th>Preis</th>
+                            <th>Menge</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Apfel</td>
+                            <td>0,50€</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>Brot</td>
+                            <td>2,00€</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td>Summe</td>
+                            <td colspan="2">9,00€</td>
+                        </tr>
+                    </tfoot>
+                    
+                </table>
+
+                <dl>
+                    <dt>colspan = über mehrere Spalten verteilt (eng. column span)</dt>
+                    <dd>Sagt dem Browser, dass eine Tabellenzelle den Platz von mehreren Spalten einnehmen soll.</dd>
+                </dl>
+            </section>
+
+            <section>
+                <h2>3. Spalten- und Zeilenüberschriften</h2>
+
+                <dl>
+                    <dt>&lt;th scope="col"&gt; = Spaltenüberschrift</dt>
+                    <dd>Überschrift gehört zu einer Spalte.</dd>
+
+                    <br>
+
+                    <dt>&lt;th scope="row"&gt; = Zeilenüberschrift</dt>
+                    <dd>Überschrift gehört zu einer Zeile.</dd>
+                </dl>
+
+                <table border="2">
+                    <caption>Tiere im Überblick</caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Tier</th>
+                            <th scope="col">Beine/ Arme</th>
+                            <th scope="col">Lebensraum</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <!-- Zeilenüberschrift -->
+                            <th scope="row">Hund</th>
+                            <td>4</td>
+                            <td>Haus</td>
+                        </tr>
+                        <tr>
+                            <!-- Zeilenüberschrift -->
+                            <th scope="row">Schildkröte</th>
+                            <td>4</td>
+                            <td>Land/ Wasser</td>
+                        </tr>
+                        <tr>
+                            <!-- Zeilenüberschrift -->
+                            <th scope="row">Krake</th>
+                            <td>8</td>
+                            <td>Wasser/ Land</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>4. Zellen verbinden mit colspan und rowspan</h2>
+
+                <dl>
+                    <dt>colspan="2"</dt>
+                    <dd>Zelle geht über zwei Spalten.</dd>
+
+                    <br>
+
+                    <dt>rowspan="2"</dt>
+                    <dd>Zelle geht über zwei Zeilen</dd>
+                </dl>
+
+                <table border="3">
+                    <caption>Wochenplan:</caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Tag</th>
+                            <th scope="col">Vormittag</th>
+                            <th scope="col">Nachmittag</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">Montag</th>
+                            <td rowspan="2">Schule</td>
+                            <td>Sport</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Dienstag</th>
+                            <td>Hund spazieren</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mittwoch</th>
+                            <td colspan="2">Wandertag</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+        </main>
+    </body>
+</html>

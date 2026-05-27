@@ -1,0 +1,66 @@
+<!-- Aufgabe 3: Nerd-Wörterbuch für Helden ( <dl> )
+Story: Ein junger Held kennt die Fachbegriffe noch nicht und braucht ein Lexikon.
+Aufgabe: Erstelle eine Beschreibungs-Liste (<dl>) mit folgenden Einträgen:
+    - HP – Lebenspunkte deines Charakters
+    - Mana – Magische Energie für Zauber
+    - NPC – Nicht spielbarer Charakter
+Ziel: <dl> mit <dt> (Begriff) und <dd> (Beschreibung) -->
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nerd-Wörterbuch für Helden</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        dl {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        dt {
+            font-weight: bold;
+            margin-top: 10px;
+            color: #2c3e50;
+        }
+
+        dd {
+            margin-left: 15px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Nerd-Wörterbuch für Helden</h1>
+
+    <dl>
+        <dt>HP</dt>
+        <dd>Lebenspunkte deines Charakters – wenn sie auf 0 fallen, ist Game Over!</dd>
+
+        <dt>Mana</dt>
+        <dd>Magische Energie, die du brauchst, um Zauber zu wirken</dd>
+
+        <dt>NPC</dt>
+        <dd>Ein Charakter im Spiel, der nicht vom Spieler gesteuert wird</dd>
+    </dl>
+
+</body>
+</html>

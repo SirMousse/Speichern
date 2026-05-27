@@ -1,0 +1,91 @@
+/*Universal Selektor = * (um alle elemente der Seite anzusprechen*/
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5;
+}
+
+/* Grundlage unserer .box */
+.box{
+    padding: 12px;                /* Innenabstand*/
+    border: 2px solid crimson;  /* Rahmen mit 2px , durchgezogener linie und der Farbe crimson */
+    margin: 10px 0;               /* Außenabstand 10px oben + unten, 0px links und rechts */
+    background-color: pink;     /* Hintergrundfarbe ist pink */
+}
+
+/* Farbnamen */
+.name-red{
+    color: red;         /* Schriftfarbe ist rot */
+}
+
+.name-blue{
+    color: blue;        /* Schriftfarbe ist blau */
+}
+
+.name-green{
+    color: green;       /* Schriftfarbe ist grün */
+}
+
+/* HEX-Farben*/
+.hex-red{
+    color: #ff0000;     /* Schriftfarbe ist rot */
+}
+
+.hex-green{
+    color: #00aa00;     /* Schriftfarbe ist grün bei #00ff00 = neongrün*/
+}
+
+.hex-blue{
+    color: #0000ff;     /* Schriftfarbe ist blau */
+}
+
+
+/* RGB/RGBA Farben */
+.rgb-red{
+    color: rgb(255, 0, 0);
+}
+
+.rgba-red{
+    color: rgba(255, 0, 0, 0.4);
+}
+
+.rgb-green{
+    color: rgb(0, 255, 0);
+}
+
+.rgba-green{
+    color: rgba(0, 255, 0, 0.5);
+}
+
+.rgb-blue{
+    color: rgb(0, 0, 255);
+}
+
+.rgba-blue{
+    color: rgba(0, 0, 255, 0.6);
+}
+
+
+/* HSL/HSLA Farben */
+.hsl-red{
+    color: hsl(0, 100%, 50%);
+}
+
+.hsla-red{
+    color: hsla(0, 100%, 50%, 0.7);
+}
+
+.hsl-green{
+    color: hsl(120, 100%, 40%);
+}
+
+.hsla-green{
+    color: hsla(120, 100%, 40%, 0.5);
+}
+
+.hsl-blue{
+    color: hsl(240, 100%, 30%);
+}
+
+.hsla-blue{
+    color: hsla(240, 100%, 30%, 0.3);
+}

@@ -1,0 +1,54 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px;
+}
+
+code{
+    font-family: monospace;
+}
+
+.box{
+    height: 80px;
+    margin: 12px 0;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    display: flex;              /* macht das  Layout flexible*/
+    justify-content: center;    /* schiebt das ganze von links/rechts in die Mitte */
+    align-items: center;        /* schiebt von oben/unten in die Mitte */
+}
+
+/*Linear Gradient -> eine Richtung*/
+.linear-basic{
+    background: linear-gradient(#00a8ff, crimson);
+}
+
+.linear-direction{
+    background: linear-gradient(to left, #6465a5, #f05837 );
+}
+
+.linear-angle{
+    background: linear-gradient(350deg, #00743f, #f2a104);
+}
+
+/*Radial-Gradient -> von der Mitte aus */
+.radial-basic{
+    background: radial-gradient(circle, #c0334d, #f1931b);
+}
+
+.radial-ellipse{
+    background: radial-gradient(ellipse, #212027, #f22f08);
+}
+
+/* Conic-Gradient -> um einen Mittelpunkt */
+.conic-basic{
+    background: conic-gradient(#003d73, #0878a4, #1ecfd6, #edd170, #c05640 );
+}
+
+/* Mehrere Farbstopps */
+.linear-stops{
+    background: linear-gradient(to right,
+        #8a8604 0%,
+        #383140 50%,
+        #cac7d7 100%);
+}

@@ -1,0 +1,254 @@
+<!-- Retro-Arcade-Streifen
+
+Erstelle einen Hintergrund, der an alte Arcade-Automaten erinnert.
+
+Vorgaben:   - Mehrere kräftige Farben
+            - Verlauf diagonal
+            - Nutze Farben wie purple, pink, blue
+            - Fläche soll wie eine Arcade-Wand wirken -->
+
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Arcade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+        min-height: 100vh;
+        overflow: hidden;
+        background:
+            repeating-linear-gradient(
+            -45deg,
+            #1a0033 0px,    #1a0033 40px,
+            #2d006e 40px,   #2d006e 80px,
+            #6600cc 80px,   #6600cc 120px,
+            #cc00aa 120px,  #cc00aa 160px,
+            #ff0099 160px,  #ff0099 200px,
+            #0033ff 200px,  #0033ff 240px,
+            #0099ff 240px,  #0099ff 280px,
+            #1a0033 280px,  #1a0033 320px
+            );
+        font-family: 'Press Start 2P', monospace;
+        display: grid;
+        place-items: center;
+        animation: scroll 12s linear infinite;
+        }
+
+        @keyframes scroll {
+        from { background-position: 0 0; }
+        to   { background-position: 320px 320px; }
+        }
+
+        body::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(0,0,0,0.18) 3px,
+            rgba(0,0,0,0.18) 4px
+            );
+        pointer-events: none;
+        z-index: 1;
+        }
+
+        body::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%);
+        pointer-events: none;
+        z-index: 2;
+        }
+
+        main {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        }
+
+        h1 {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+        color: #fff;
+        text-align: center;
+        line-height: 1.6;
+        text-shadow:
+            0 0 10px #ff00ff,
+            0 0 25px #ff00ff,
+            0 0 50px #cc00ff,
+            4px 4px 0 #330066;
+        animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+        0%, 100% { text-shadow: 0 0 10px #ff00ff, 0 0 25px #ff00ff, 0 0 50px #cc00ff, 4px 4px 0 #330066; }
+        50%       { text-shadow: 0 0 20px #00ffff, 0 0 45px #00ffff, 0 0 80px #0066ff, 4px 4px 0 #003366; }
+        }
+
+        p.sub {
+        font-size: 0.5rem;
+        letter-spacing: 0.2em;
+        color: rgba(255, 220, 255, 0.7);
+        text-align: center;
+        text-shadow: 0 0 8px rgba(255, 100, 255, 0.6);
+        animation: blink 1.2s step-start infinite;
+        }
+
+        @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+        }
+
+        nav {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+
+        button {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.1em;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.55);
+        border: 2px solid;
+        border-radius: 0;
+        padding: 0.75rem 1.2rem;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+        text-transform: uppercase;
+        outline: none;
+        }
+
+        button:nth-child(1) { border-color: #ff00ff; box-shadow: 0 0 10px #ff00ff44, inset 0 0 10px #ff00ff11; }
+        button:nth-child(2) { border-color: #00ffff; box-shadow: 0 0 10px #00ffff44, inset 0 0 10px #00ffff11; }
+        button:nth-child(3) { border-color: #ffff00; box-shadow: 0 0 10px #ffff0044, inset 0 0 10px #ffff0011; }
+
+        button:nth-child(1):hover { background: rgba(255,0,255,0.25); box-shadow: 0 0 25px #ff00ff88; }
+        button:nth-child(2):hover { background: rgba(0,255,255,0.25); box-shadow: 0 0 25px #00ffff88; }
+        button:nth-child(3):hover { background: rgba(255,255,0,0.25); box-shadow: 0 0 25px #ffff0088; }
+
+        button:active { transform: scale(0.94); }
+        button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+        output {
+        font-size: 0.5rem;
+        color: #ffff00;
+        letter-spacing: 0.15em;
+        text-shadow: 0 0 8px #ffff00;
+        min-height: 1.5em;
+        text-align: center;
+        }
+
+        ul.scores {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        }
+
+        ul.scores li {
+        font-size: 0.45rem;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.55);
+        text-shadow: 0 0 6px rgba(200, 100, 255, 0.5);
+        }
+
+        ul.scores li strong {
+        color: #ff88ff;
+        font-weight: 400;
+        }
+    </style>
+    </head>
+    <body>
+    <main>
+        <h1>ARCADE<br>MASTER</h1>
+        <p class="sub">&mdash; INSERT COIN TO CONTINUE &mdash;</p>
+        <nav>
+        <button id="btn1">1 PLAYER</button>
+        <button id="btn2">2 PLAYER</button>
+        <button id="btn3">HIGH SCORE</button>
+        </nav>
+        <output id="log"></output>
+        <ul class="scores" id="scores">
+        <li><strong>AAA</strong> &nbsp; 99800</li>
+        <li><strong>ZRX</strong> &nbsp; 84200</li>
+        <li><strong>NKL</strong> &nbsp; 71500</li>
+        </ul>
+    </main>
+
+    <script>
+        const log = document.getElementById('log');
+        const scores = document.getElementById('scores');
+
+        const lines1 = ['> PLAYER 1 READY!', '> SELECT CHARACTER...', '> FIGHT!'];
+        const lines2 = ['> PLAYER 2 READY!', '> CHALLENGE ACCEPTED!', '> ROUND 1 — BEGIN!'];
+        const lines3 = ['> LOADING HALL OF FAME...'];
+
+        function typeOut(lines, delay = 55) {
+        log.textContent = '';
+        let li = 0;
+        function nextLine() {
+            if (li >= lines.length) return;
+            const line = lines[li++];
+            let i = 0;
+            const t = setInterval(() => {
+            log.textContent = log.textContent.slice(0, -0) + line.slice(0, ++i);
+            if (i >= line.length) {
+                clearInterval(t);
+                setTimeout(nextLine, 400);
+            }
+            }, delay);
+        }
+        nextLine();
+        }
+
+        function flashScores() {
+        const items = scores.querySelectorAll('li');
+        items.forEach((li, i) => {
+            setTimeout(() => {
+            li.style.color = '#ffff00';
+            li.style.textShadow = '0 0 12px #ffff00';
+            setTimeout(() => {
+                li.style.color = '';
+                li.style.textShadow = '';
+            }, 400);
+            }, i * 180);
+        });
+        }
+
+        document.getElementById('btn1').addEventListener('click', () => typeOut(lines1));
+        document.getElementById('btn2').addEventListener('click', () => typeOut(lines2));
+        document.getElementById('btn3').addEventListener('click', () => {
+        typeOut(lines3);
+        flashScores();
+        });
+
+        document.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            let ticks = 0;
+            const orig = btn.textContent;
+            const glyphs = '!?#@*%&<>';
+            const iv = setInterval(() => {
+            btn.textContent = orig.split('').map(c =>
+                c === ' ' ? ' ' : (Math.random() > 0.6 ? glyphs[Math.floor(Math.random()*glyphs.length)] : c)
+            ).join('');
+            if (++ticks > 6) { clearInterval(iv); btn.textContent = orig; }
+            }, 45);
+        });
+        });
+    </script>
+    </body>
+</html>

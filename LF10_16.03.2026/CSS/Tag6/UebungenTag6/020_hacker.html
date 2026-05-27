@@ -1,0 +1,204 @@
+<!-- Hacker-Button
+
+Gestalte einen Button im Hacker-Stil.
+
+Vorgaben:   - Hintergrund mit linear-gradient
+            - Farben: darkgreen, lime, black
+            - Verlauf soll diagonal sein
+            - Textfarbe: weiß
+
+Extra-Challenge: Beim Hover soll sich der Verlauf umdrehen. -->
+
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacker Button</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+        min-height: 100vh;
+        background: #050a05;
+        display: grid;
+        place-items: center;
+        font-family: 'Share Tech Mono', monospace;
+        }
+
+        main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        }
+
+        button {
+        position: relative;
+        padding: 1rem 2.8rem;
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 1rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #fff;
+        background: linear-gradient(135deg, #006400, #000000, #32cd32);
+        border: 1px solid rgba(50, 205, 50, 0.45);
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+        overflow: hidden;
+        transition:
+            background 0.45s ease,
+            box-shadow 0.3s ease,
+            letter-spacing 0.3s ease;
+        box-shadow:
+            0 0 10px rgba(50, 205, 50, 0.2),
+            inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        button::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(50, 205, 50, 0.04) 3px,
+            rgba(50, 205, 50, 0.04) 4px
+        );
+        pointer-events: none;
+        z-index: 1;
+        }
+
+        button::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(50, 205, 50, 0.12),
+            transparent
+        );
+        pointer-events: none;
+        z-index: 2;
+        transition: left 0s;
+        }
+
+        button:hover {
+        background: linear-gradient(135deg, #32cd32, #000000, #006400);
+        letter-spacing: 0.28em;
+        box-shadow:
+            0 0 25px rgba(50, 205, 50, 0.5),
+            0 0 60px rgba(50, 205, 50, 0.15),
+            inset 0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        button:hover::after {
+        left: 150%;
+        transition: left 0.55s ease;
+        }
+
+        button:active {
+        transform: scale(0.97);
+        box-shadow:
+            0 0 8px rgba(50, 205, 50, 0.4),
+            inset 0 0 30px rgba(0, 0, 0, 0.7);
+        }
+
+        button:focus-visible {
+        outline: 2px solid lime;
+        outline-offset: 3px;
+        }
+
+        span.label {
+        position: relative;
+        z-index: 3;
+        }
+
+        output {
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 0.72rem;
+        color: rgba(50, 205, 50, 0.6);
+        letter-spacing: 0.12em;
+        min-height: 1.2em;
+        text-align: center;
+        }
+    </style>
+    </head>
+    <body>
+    <main>
+        <button id="btn">
+        <span class="label" id="label">ACCESS SYSTEM</span>
+        </button>
+        <output id="log"></output>
+    </main>
+
+    <script>
+        const btn = document.getElementById('btn');
+        const label = document.getElementById('label');
+        const log = document.getElementById('log');
+
+        const messages = [
+        '> INITIATING BREACH...',
+        '> BYPASSING FIREWALL...',
+        '> INJECTING PAYLOAD...',
+        '> ACCESS GRANTED.',
+        ];
+
+        const glitchChars = '!@#$%^&*<>/\\|█▓▒░';
+        let glitching = false;
+        let msgIndex = 0;
+
+        function glitch(original, callback) {
+        if (glitching) return;
+        glitching = true;
+        let ticks = 0;
+        const max = 10;
+        const interval = setInterval(() => {
+            label.textContent = original
+            .split('')
+            .map(c => c === ' ' ? ' ' : (Math.random() > 0.5 ? glitchChars[Math.floor(Math.random() * glitchChars.length)] : c))
+            .join('');
+            ticks++;
+            if (ticks >= max) {
+            clearInterval(interval);
+            label.textContent = original;
+            glitching = false;
+            if (callback) callback();
+            }
+        }, 40);
+        }
+
+        btn.addEventListener('mouseenter', () => {
+        glitch('ACCESS SYSTEM');
+        });
+
+        btn.addEventListener('click', () => {
+        const msg = messages[msgIndex % messages.length];
+        msgIndex++;
+        log.textContent = '';
+
+        let i = 0;
+        const type = setInterval(() => {
+            log.textContent += msg[i];
+            i++;
+            if (i >= msg.length) {
+            clearInterval(type);
+            if (msg === '> ACCESS GRANTED.') {
+                glitch('ACCESS SYSTEM', () => {
+                label.textContent = 'ACCESS SYSTEM';
+                });
+                msgIndex = 0;
+                setTimeout(() => log.textContent = '', 2000);
+            }
+            }
+        }, 40);
+        });
+    </script>
+    </body>
+</html>

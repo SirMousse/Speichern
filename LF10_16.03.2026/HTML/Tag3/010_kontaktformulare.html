@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kontaktformulare in HTML</title>
+    </head>
+    
+    <body>
+        <header>
+            <h1>Kontaktformulare in HTML</h1>
+
+            <p>Formulare helfen uns dabei, Faten von Nutzern einzusammeln. Die wichigsten Bausteine sind:</p>
+
+            <ul>
+                <li><strong>&lt;form&gt;</strong> = der Formular Rahmen (Container)</li>
+                <li><strong>&lt;label&gt;</strong> = Beschriftung für die Eingabefelder</li>
+                <li><strong>&lt;input&gt;</strong> = Eingabefeld (Bsp.: Name, Passowrt, E-Mail, Telefonnumer, etc.)</li>
+                <li><strong>&lt;textarea&gt;</strong> = großes Textfeld (Bsp.: Nachrichten)</li>
+                <li><strong>&lt;select&gt;</strong> und <strong>&lt;option&gt;</strong> = Dropdown Auswahl</li>
+                <li><strong>&lt;button&gt;</strong> = Button (Absenden/ Zurücksetzen)</li>
+            </ul>
+        </header>
+
+        <main>
+            <section>
+                <h2>1. Das einfache Kontakformular</h2>
+
+                <p>Ein Kontaktformular besteht meistens aus Name, E-Mail und Nachricht.</p>
+
+                <form>
+                    <p>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name">
+                    </p>
+
+                    <p>
+                        <label for="email">E-Mail</label>
+                        <input type="email" name="email" id="email">
+                    </p>
+
+                    <p>
+                        <label for="message">Nachricht:</label> <br>
+                        <textarea name="message" id="message" cols="50" rows="10"></textarea>
+                    </p>
+
+                    <button type="submit">Absenden</button>
+                </form>
+
+                <dl>
+                    <dt>for (bei &lt;label&gt;) + id</dt>
+                    <dd>Verbindet Label und Feld. Klickst du auf das Label, sprint dein Cursor ins Feld.</dd>
+                </dl>
+            </section>
+
+            <section>
+                <h2>2. Wichtigen Form-Attribute: action und method</h2>
+
+                <dl>
+                    <dt>action=""</dt>
+                    <dd>Wohin die Daten geschickt werden (Bsp.: eine Server-Adresse oder ein Skript).</dd>
+
+                    <br>
+
+                    <dt>method="GET"</dt>
+                    <dd>Daten werden in die URL(= Uniform Resource Locator) geschrieben (gut für eine Suche, schlecht für unsere sensiblen Daten).</dd>
+
+                    <br>
+
+                    <dt>method="POST"</dt>
+                    <dd>Daten werden im Hintergrund gesendet (Standard Formular).</dd>
+                </dl>
+
+                <form action="010_kontaktformulare.html" method="post">
+
+                    <p>
+                        <label for="topic">Thema:</label>
+                        <input type="text" name="topic" id="topic" placeholder="Rückfragen zum Kurs">
+                    </p>
+
+                    <button type="submit">Senden</button>
+                </form>
+
+                <p>
+                    HINWEIS: Ohne echten Server passiert beim Absenden oft nichts Sichtbares, aber HTML "baut" das Formular korrekt.
+                </p>
+            </section>
+
+            <section>
+                <h2>3. Input-Typen und ihre Funktionen</h2>
+
+                <p>
+                    Der <strong>type</strong> sagt dem Browser, welche Art von Daten erwartet werden.
+                    Dadurch bekommt man die passenden Tastaturen am Handy/Tablet und manchmal auch eine automatische Überprüfung.
+                </p>
+
+                <form>
+                    <p>
+                        <label for="mail">E-Mail</label>
+                        <input type="email" name="mail" id="mail" placeholder="beispiel@gmail.com">
+                    </p>
+
+                    <p>
+                        <label for="tel">Telefonnummer</label>
+                        <input type="tel" name="tel" id="tel" placeholder="+49........">
+                    </p>
+
+                    <p>
+                        <label for="date">Termin</label>
+                        <input type="date" name="date" id="date">
+                    </p>
+
+                    <p>
+                        <label for="prio">Priorität (1-5)</label>
+                        <input type="number" name="prio" id="prio" min="1" max="5">
+                    </p>
+
+                    <button type="submit">Senden</button>
+                </form>
+
+                <dl>
+                    <dt>placeholder=""</dt>
+                    <dd>Ein Hinweistext im Feld (verschwindet beim Tippen).</dd>
+
+                    <dt>min/max</dt>
+                    <dd>Grenze der Zahlen (oder ein Datum)</dd>
+                    <dd>min = minimum (kleinster Wert) | max = maximum (größter Wert)</dd>
+                </dl>
+            </section>
+
+            <section>
+                <h2>4. Pflichtfelder und einfache Validierung</h2>
+
+                <p>
+                    Mit <strong>required</strong> kann man Felder verpflichtend setzen.
+                    Der Browser verhindert dann das Absenden, wenn etwas fehlt.
+                </p>
+
+                <form>
+                    <p>
+                        <label for="name007">Name (Pflicht):</label>
+                        <input type="text" name="name007" id="name007" required>
+                    </p>
+
+                    <p>
+                        <label for="mail007">E-Mail (Pflicht):</label>
+                        <input type="email" name="mail007" id="mail007" required>
+                    </p>
+
+                    <p>
+                        <label for="msg">Nachricht (min. 10 Zeichen lang sein):</label>
+                        <textarea name="msg" id="msg" minlength="10" maxlength="160" required></textarea>
+                    </p>
+
+                    <button type="submit">Senden</button>
+                </form>
+
+                <dl>
+                    <dt>required</dt>
+                    <dd>Muss ausgefüllt werden!!!!</dd>
+
+                    <br>
+
+                    <dt>minlength</dt>
+                    <dd>Mindestlänge für unseren Text.</dd>
+
+                    <br>
+
+                    <dt>maxlength</dt>
+                    <dd>Maximalelänge für unseren Text.</dd>
+                </dl>
+            </section>
+
+            <section>
+                <h2>5. Auswahlfelder: select, radio, checkbox</h2>
+
+                <dl>
+                    <dt>radio</dt>
+                    <dd>Nur eine Option ist auswählbar.</dd>
+
+                    <br>
+
+                    <dt>select</dt>
+                    <dd>Ist eine Auswahlliste zum Ausklappen.</dd>
+
+                    <br>
+
+                    <dt>checkbox</dt>
+                    <dd>Ist variable zwischen an und aus oder mehreren Auswahlmöglichkeiten.</dd>
+                </dl>
+
+                <form>
+                    <p>
+                        <label for="reason">Warum schreibst du uns?</label>
+                        <select name="reason" id="reason">
+                            <option value="" disabled selected>Bitte auswählen</option>
+                            <option value="frage">Ich habe eine Frage</option>
+                            <option value="feedback">Ich möchte Feedback geben</option>
+                            <option value="support">Ich brache Hilfe!!!</option>
+                            <option value="coffee">Der Kaffee ist leer...</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <h3>Kontaktwunsch:</h3>
+                        <input type="radio" name="contact" id="contactMail" value="email">
+                        <label for="contactMail">per E-Mail</label>
+
+                        <br>
+
+                        <input type="radio" name="contact" id="contactPhone" value="telefon">
+                        <label for="contactPhone">per Telefon</label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" name="privacy" id="privacy" required>
+                        <label for="privacy">Ich akzeptiere die Datenschutzbedingungen (Pflicht)!!!</label>
+                    </p>
+
+                    <button type="submit">Senden</button>
+
+                </form>
+
+                <dl>
+                    <dt>disabled</dt>
+                    <dd>Option kann nicht ausgewählt werden.</dd>
+
+                    <br>
+
+                    <dt>selected</dt>
+                    <dd>Option ist standardgemäß ausgewählt.</dd>
+                </dl>
+            </section>
+
+            <section>
+                <h2>6. Buttons: submit, reset, button</h2>
+
+                <dl>
+                    <dt>type="submit</dt>
+                    <dd>Sendet das Formular ab.</dd>
+
+                    <br>
+
+                    <dt>type="reset"</dt>
+                    <dd>Setzt alle Felder auf den Startzustand zurück.</dd>
+
+                    <br>
+
+                    <dt>type="button"</dt>
+                    <dd>Macht erst etwas, wenn JavaScript hinzugefügt wurde.</dd>
+                </dl>
+
+                <form>
+                    <p>
+                        <label for="demo">Testfeld:</label>
+                    <input type="text" name="demo" id="demo" placeholder="Schreib irgendetwas hierher!">
+                    </p>
+
+                    <button type="submit">Absenden (submit)</button>
+                    <button type="reset">Zurücksetzen (reset)</button>
+                    <button type="button">Macht erst etwas bei JS (button)</button>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

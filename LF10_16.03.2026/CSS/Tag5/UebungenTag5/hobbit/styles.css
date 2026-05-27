@@ -1,0 +1,667 @@
+/* ============================================
+    HOBBIT-HAUS – Haupt-Stylesheet
+    Farb-Anforderungen:
+    - Himmel:  rgb()
+    - Wiese:   hsl()
+    - Tür:     Hex-Farbe
+    - Fenster: rgba() mit Transparenz
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Pro:ital@0;1&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background: #1a1209;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 36px;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    color: #c8a96e;
+    font-size: clamp(1.1rem, 2.8vw, 1.9rem);
+    text-align: center;
+    letter-spacing: 0.08em;
+    text-shadow: 0 2px 14px rgba(200, 169, 110, 0.45);
+}
+
+.szenen-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+}
+
+/* ---------- Szenen-Container ---------- */
+.szene-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.szene {
+    position: relative;
+    width: 480px;
+    height: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(200, 169, 110, 0.2);
+}
+
+.szene-label {
+    font-family: 'Cinzel Decorative', cursive;
+    color: #c8a96e;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+}
+
+/* ============================================
+    HIMMEL → rgb()
+   ============================================ */
+
+.himmel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(to bottom,
+            rgb(95, 165, 225),
+            rgb(175, 215, 242));
+}
+
+.wolke {
+    position: absolute;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.80);
+    filter: blur(4px);
+}
+
+.wolke-1 {
+    width: 90px;
+    height: 28px;
+    top: 18%;
+    left: 8%;
+}
+
+.wolke-2 {
+    width: 58px;
+    height: 20px;
+    top: 29%;
+    left: 21%;
+}
+
+.wolke-3 {
+    width: 108px;
+    height: 32px;
+    top: 12%;
+    left: 54%;
+}
+
+.wolke-4 {
+    width: 68px;
+    height: 22px;
+    top: 25%;
+    left: 68%;
+}
+
+.sonne {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    top: 10%;
+    right: 11%;
+    background: rgb(255, 232, 90);
+    box-shadow: 0 0 22px 9px rgba(255, 232, 90, 0.5);
+}
+
+/* ============================================
+    WIESE → hsl()
+   ============================================ */
+
+.wiese {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 52%;
+    background: linear-gradient(to bottom,
+            hsl(108, 55%, 31%),
+            hsl(102, 48%, 24%));
+    border-radius: 0 0 14px 14px;
+}
+
+.wiese::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 22px;
+    background:
+        radial-gradient(ellipse 32px 15px at 12% 100%, hsl(110, 62%, 37%) 95%, transparent 96%),
+        radial-gradient(ellipse 42px 17px at 30% 100%, hsl(106, 58%, 34%) 95%, transparent 96%),
+        radial-gradient(ellipse 52px 18px at 52% 100%, hsl(112, 60%, 39%) 95%, transparent 96%),
+        radial-gradient(ellipse 38px 15px at 72% 100%, hsl(108, 56%, 35%) 95%, transparent 96%),
+        radial-gradient(ellipse 30px 14px at 90% 100%, hsl(110, 60%, 37%) 95%, transparent 96%);
+}
+
+/* ============================================
+    HÜGEL
+   ============================================ */
+
+.huegel {
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 160px;
+    background: linear-gradient(155deg,
+            hsl(114, 52%, 28%) 0%,
+            hsl(108, 48%, 22%) 60%,
+            hsl(100, 44%, 18%) 100%);
+    border-radius: 50% 50% 0 0 / 70% 70% 0 0;
+    z-index: 2;
+}
+
+.huegel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 50%;
+    background: radial-gradient(ellipse, hsl(116, 56%, 36%) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.55;
+}
+
+/* ============================================
+    FASSADE
+   ============================================ */
+
+.haus {
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 110px;
+    background: linear-gradient(155deg, #a8916a 0%, #8b7355 55%, #7a6347 100%);
+    border-radius: 8px;
+    z-index: 3;
+    box-shadow: inset -6px 0 18px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.haus::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        repeating-linear-gradient(transparent, transparent 14px, rgba(0, 0, 0, 0.07) 14px, rgba(0, 0, 0, 0.07) 16px),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(0, 0, 0, 0.04) 24px, rgba(0, 0, 0, 0.04) 26px);
+    border-radius: 8px;
+}
+
+/* ============================================
+    RUNDE TÜR → Hex-Farbe
+   ============================================ */
+
+.tuer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 72px;
+    background: #5c2e0a;
+    /* Hex-Farbe */
+    border-radius: 26px 26px 0 0;
+    z-index: 4;
+    border: 3px solid #3d1e06;
+    box-shadow: inset -3px 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.tuer::after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #e8c060, #a07020);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.tuer-rahmen {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 78px;
+    border-radius: 30px 30px 0 0;
+    border: 4px solid #3d1e06;
+    border-bottom: none;
+    z-index: 3;
+}
+
+/* ============================================
+    FENSTER → rgba() mit Transparenz
+   ============================================ */
+
+.fenster {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 210, 100, 0.35);
+    /* rgba Transparenz */
+    border: 3px solid #5c3d1a;
+    z-index: 4;
+    overflow: hidden;
+}
+
+.fenster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 235, 150, 0.25);
+    border-radius: 50%;
+}
+
+.fenster::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(92, 61, 26, 0.65);
+    transform: translateY(-50%);
+}
+
+.fenster-kreuz {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: rgba(92, 61, 26, 0.65);
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.fenster-links {
+    top: 22%;
+    left: 14%;
+}
+
+.fenster-rechts {
+    top: 22%;
+    right: 14%;
+}
+
+/* ============================================
+    SCHORNSTEIN & RAUCH
+   ============================================ */
+
+.schornstein {
+    position: absolute;
+    top: -30px;
+    left: 28px;
+    width: 22px;
+    height: 34px;
+    background: linear-gradient(180deg, #7a6347, #5e4c38);
+    border-radius: 3px 3px 0 0;
+    z-index: 5;
+}
+
+.rauch {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(200, 190, 180, 0.5);
+    animation: rauch-auf 3s ease-in-out infinite;
+}
+
+.rauch-1 {
+    width: 10px;
+    height: 10px;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rauch-2 {
+    width: 14px;
+    height: 14px;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 1s;
+    opacity: 0.4;
+}
+
+.rauch-3 {
+    width: 18px;
+    height: 18px;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 2s;
+    opacity: 0.25;
+}
+
+@keyframes rauch-auf {
+    0% {
+        transform: translateX(-50%) translateY(0) scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(-60%) translateY(-18px) scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+    WEG AUS STEINEN
+   ============================================ */
+
+.weg,
+.weg li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.weg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 75px;
+    z-index: 2;
+}
+
+.stein {
+    position: absolute;
+    border-radius: 40% 60% 55% 45% / 50% 50% 50% 50%;
+    background: linear-gradient(135deg, #9a8e80, #7a7068);
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.stein:nth-child(1) {
+    width: 26px;
+    height: 16px;
+    bottom: 2px;
+    left: 10px;
+}
+
+.stein:nth-child(2) {
+    width: 22px;
+    height: 14px;
+    bottom: 2px;
+    left: 36px;
+}
+
+.stein:nth-child(3) {
+    width: 20px;
+    height: 13px;
+    bottom: 18px;
+    left: 4px;
+}
+
+.stein:nth-child(4) {
+    width: 24px;
+    height: 15px;
+    bottom: 18px;
+    left: 26px;
+}
+
+.stein:nth-child(5) {
+    width: 18px;
+    height: 12px;
+    bottom: 18px;
+    left: 50px;
+}
+
+.stein:nth-child(6) {
+    width: 22px;
+    height: 14px;
+    bottom: 34px;
+    left: 8px;
+}
+
+.stein:nth-child(7) {
+    width: 20px;
+    height: 13px;
+    bottom: 34px;
+    left: 30px;
+}
+
+.stein:nth-child(8) {
+    width: 16px;
+    height: 11px;
+    bottom: 50px;
+    left: 14px;
+}
+
+.stein:nth-child(9) {
+    width: 18px;
+    height: 12px;
+    bottom: 50px;
+    left: 34px;
+}
+
+/* ============================================
+    BLUMEN (Frühling)
+   ============================================ */
+
+.blume {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.blume::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 14px;
+    background: hsl(120, 50%, 30%);
+}
+
+.blume-gelb {
+    background: rgb(255, 220, 50);
+}
+
+.blume-rot {
+    background: rgb(220, 60, 60);
+}
+
+.blume-lila {
+    background: rgb(160, 80, 200);
+}
+
+/* ============================================
+    ===  VARIANTE: HERBST  ===
+   ============================================ */
+
+.herbst .himmel {
+    background: linear-gradient(to bottom,
+            rgb(195, 138, 72),
+            rgb(238, 192, 125));
+}
+
+.herbst .sonne {
+    background: rgb(255, 175, 55);
+    box-shadow: 0 0 26px 10px rgba(255, 155, 35, 0.5);
+}
+
+.herbst .wolke {
+    background: rgba(255, 215, 170, 0.65);
+}
+
+.herbst .wiese {
+    background: linear-gradient(to bottom,
+            hsl(35, 52%, 30%),
+            hsl(28, 48%, 21%));
+}
+
+.herbst .wiese::before {
+    background:
+        radial-gradient(ellipse 32px 15px at 12% 100%, hsl(38, 60%, 36%) 95%, transparent 96%),
+        radial-gradient(ellipse 42px 17px at 30% 100%, hsl(32, 56%, 33%) 95%, transparent 96%),
+        radial-gradient(ellipse 52px 18px at 52% 100%, hsl(40, 58%, 38%) 95%, transparent 96%),
+        radial-gradient(ellipse 38px 15px at 72% 100%, hsl(35, 54%, 34%) 95%, transparent 96%),
+        radial-gradient(ellipse 30px 14px at 90% 100%, hsl(30, 58%, 36%) 95%, transparent 96%);
+}
+
+.herbst .huegel {
+    background: linear-gradient(155deg,
+            hsl(35, 50%, 27%) 0%,
+            hsl(28, 46%, 21%) 60%,
+            hsl(22, 42%, 17%) 100%);
+}
+
+.herbst .huegel::before {
+    background: radial-gradient(ellipse, hsl(38, 54%, 34%) 0%, transparent 70%);
+}
+
+.herbst .blume {
+    display: none;
+}
+
+.blatt {
+    position: absolute;
+    width: 11px;
+    height: 9px;
+    border-radius: 50% 0 50% 0;
+    z-index: 3;
+    opacity: 0.88;
+}
+
+/* ============================================
+    ===  VARIANTE: NACHT  ===
+   ============================================ */
+
+.nacht .himmel {
+    background: linear-gradient(to bottom,
+            rgb(8, 10, 30),
+            rgb(25, 32, 62));
+}
+
+/* Mond */
+.nacht .sonne {
+    width: 38px;
+    height: 38px;
+    background: radial-gradient(circle at 40% 40%, rgb(242, 240, 222), rgb(198, 196, 178));
+    box-shadow: 0 0 18px 6px rgba(218, 216, 198, 0.38);
+}
+
+.nacht .sonne::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgb(20, 24, 52);
+}
+
+.nacht .wolke {
+    background: rgba(55, 62, 98, 0.55);
+    filter: blur(6px);
+}
+
+.nacht .wiese {
+    background: linear-gradient(to bottom,
+            hsl(200, 20%, 14%),
+            hsl(200, 18%, 9%));
+}
+
+.nacht .wiese::before {
+    background:
+        radial-gradient(ellipse 32px 15px at 12% 100%, hsl(202, 22%, 17%) 95%, transparent 96%),
+        radial-gradient(ellipse 42px 17px at 30% 100%, hsl(200, 20%, 15%) 95%, transparent 96%),
+        radial-gradient(ellipse 52px 18px at 52% 100%, hsl(202, 22%, 18%) 95%, transparent 96%),
+        radial-gradient(ellipse 38px 15px at 72% 100%, hsl(200, 20%, 16%) 95%, transparent 96%),
+        radial-gradient(ellipse 30px 14px at 90% 100%, hsl(202, 22%, 17%) 95%, transparent 96%);
+}
+
+.nacht .huegel {
+    background: linear-gradient(155deg, hsl(202, 20%, 13%) 0%, hsl(200, 18%, 9%) 100%);
+}
+
+.nacht .huegel::before {
+    opacity: 0.15;
+}
+
+.nacht .haus {
+    background: linear-gradient(155deg, #756248 0%, #5a4c38 100%);
+}
+
+/* Warmes Licht nachts */
+.nacht .fenster {
+    background: rgba(255, 185, 55, 0.65);
+    /* rgba Transparenz */
+    box-shadow: 0 0 16px 8px rgba(255, 185, 55, 0.30);
+}
+
+.nacht .fenster::before {
+    background: rgba(255, 215, 115, 0.42);
+}
+
+.nacht .blume {
+    display: none;
+}
+
+/* Sterne */
+.stern {
+    position: absolute;
+    border-radius: 50%;
+    background: rgb(255, 255, 245);
+    z-index: 1;
+    animation: blinken 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes blinken {
+    from {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}

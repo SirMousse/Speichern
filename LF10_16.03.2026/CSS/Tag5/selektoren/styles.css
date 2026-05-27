@@ -1,0 +1,167 @@
+/*Universalselektor*/
+*{
+    font-family:Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    box-sizing: border-box; /* box-sizing bestimmt , wie die Größe eines Elements berechnet wird | border-box = Inhalt wird automatisch kleiner (200px)*/
+    margin: 0;
+    padding: 0;
+}
+
+/*Elementselektor*/
+body{
+    background: linear-gradient(to bottom, #eef4ff, #f8fbff);
+    color: #1f2937;
+}
+
+/* Kopfbereich = header */
+header{
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);  /* Farbverlauf von zwei unterschiedlichen Farben, die aufeinander treffen */
+    color: white;
+    text-align: center;         /* text-align = aussrichtung des Textes | center = zentriert */
+    padding: 4rem 1.5rem 3rem;  /* rem = relative zum Root-Element | 4rem = oben / 1.5 rem = rechts und links / 3rem = unten*/
+    box-shadow: 0 10px 30px rgb(15, 23, 42);    /*box-shadow = Schatten des "Rahmen"/ Box */
+}
+
+header h1{
+    font-size: clamp(2rem, 5vw, 3.2rem);        /* Schrift soll mitwachsen -> clamp(Min, Ideal, Max) => Schrift soll niemals kleiner als 2rem sein! vw= viewport width | vh = viewport height*/
+    /* vw = viewport width = Breite des sichtbaren Browserfensters | 5vw = 5% der Breite = 50px | vw = kann höchstens 100vw = 1000px = 100% der breite */
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+header p{
+    max-width: 800px;
+    margin: 0 auto;       /*0 = unten und oben | auto = brechnet links und rechts Platz automatisch damit er gleich bleibt */
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hauptbereich = main*/
+main{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.2rem 4rem;
+}
+
+/* Sections = Abschnitte */
+section{
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;        /* border-radius kann ich die Ecken abrunden */
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Überschriften */
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #1d4ed8;
+    border-left: #2563eb solid 6px;
+    padding-left: 0.8rem;
+    text-decoration: underline;  /* Überschriften unterstrichen durch underline */
+}
+
+h3{
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* Tabelle */
+
+table{
+    width: 100%;
+    border-collapse: collapse;  /* Zieh die benachbarten Ränder zusammen -> also aus mehreren Linien wird eine */
+    border-radius: 14px;
+    overflow: hidden;       /* Alles was aus dem Element herausragt, wird abgeschnitten bzw. versteckt */
+    background-color: white;
+}
+
+thead{
+    background:  linear-gradient(135deg, #1e293b, #334155 );
+    color: white;
+}
+
+th{
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.95rem;
+}
+
+td{
+    padding: 1rem;
+    border-bottom: 1px solid #dbe3ef;
+}
+
+tbody tr:nth-child(even){           /* typisch für Tabellen styling -> es werden alle geraden Kinder der Tabelle angesprochen (jede zweite Zeile) */
+    background-color: #f8fbff;
+}
+
+tbody tr:hover{                     /* wenn wir über das Element in der Tabelle gehen, wird es farblich hervorgehoben*/
+    background-color: #edf4ff;
+    transition: 0.2s;
+}
+
+/*Article */
+article{
+    background: linear-gradient( to bottom right, #ffffff, #f8fbff);
+    border: 1px solid #dbe3ef;
+    border-left: 6px solid #2563eb;
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.1);
+}
+
+article p{
+    margin-bottom: 0.8rem;
+}
+
+article strong{
+    color: #1d4ed8;
+}
+
+/*code */
+code{
+    font-family: 'Fire Code', monospace;
+    background-color: #eef2ff;
+    color: #b91c1c;
+    padding: 0.2rem 0.45rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+pre{
+    margin-top: 1rem;
+    background-color: #0f172a;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+pre code{
+    display: block;
+    padding: 1rem 0;
+    color: #e2e8f0;
+    background: none;
+    font-size: 1rem;
+    transform: translateX(-10rem);     /* wenn man Elemente optisch verschieben möchte */
+}
+
+/* Responsive für Handy, Tablet oder kleinere Bildschirme */
+@media (max-width: 768px) {
+    header{
+        padding: 3rem 1rem 2rem;
+    }
+
+    section{
+        padding: 1.2rem;
+    }
+
+    th, td {
+        padding: 0.7rem;
+    }
+
+    h2{
+        font-size: 1.4rem;
+    }
+}
